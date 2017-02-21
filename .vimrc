@@ -18,6 +18,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/seoul256.vim'
 " Plugin 'flazz/vim-colorshemes'
 Plugin 'kien/ctrlp.vim'
 
@@ -60,6 +62,11 @@ au BufNewFile,BufRead *.js, *.html, *.css
 
 let python_highlight_all=1
 syntax on
+
+" Set color
+colo seoul256
+colo seoul256-light
+set background=dark
 
 set nu
 set encoding=utf-8
