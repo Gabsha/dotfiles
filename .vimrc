@@ -20,6 +20,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/seoul256.vim'
+Plugin 'tomasr/molokai'
+Plugin 'qpkorr/vim-bufkill'
 " Plugin 'flazz/vim-colorshemes'
 Plugin 'kien/ctrlp.vim'
 
@@ -64,9 +66,13 @@ let python_highlight_all=1
 syntax on
 
 " Set color
-colo seoul256
-colo seoul256-light
-set background=dark
+" colo seoul256
+" colo seoul256-light
+" set background=dark
+color molokai
+
+" Set the background transparent
+hi Normal ctermbg=none
 
 set nu
 set encoding=utf-8
