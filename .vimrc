@@ -18,11 +18,16 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'tomasr/molokai'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'Lokaltog/powerline', {'rpt': 'powerline/bindings/vim/'}
+Plugin 'kien/tabman.vim'
+" Plugin 'Valloric/YouCompleteMe'
 " Plugin 'flazz/vim-colorshemes'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'kien/ctrlp.vim'
 
 
@@ -62,14 +67,21 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \set softtabstop=2
     \set shiftwidth=2
 
+set encoding=utf-8
+
 let python_highlight_all=1
 syntax on
+
+" toggle nerdtree display
+map <F3> :NERDTreeToggle<CR>
 
 " Set color
 " colo seoul256
 " colo seoul256-light
 " set background=dark
 color molokai
+
+nnoremap <buffer> <F9> :exec 'w !python' shellescape(@%, 1)<cr>
 
 " Set the background transparent
 hi Normal ctermbg=none
