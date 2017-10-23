@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export TERM="xterm-256color"
@@ -12,6 +12,12 @@ ZSH_THEME="agnoster"
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+# alias vim=/opt/vim80/bin/vim
+alias vim=~/Software/nvim.appimage
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -88,3 +94,13 @@ DEFAULT_USER=gabriel
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Virtual env
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+
+# FZF setup
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND="find -L"
