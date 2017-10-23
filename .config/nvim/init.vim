@@ -1,8 +1,6 @@
 
 " Map leader key
-let mapleader="\<SPACE>"
-
-
+" let mapleader="\<SPACE>"
 
 " Plugin setup
 call plug#begin()
@@ -18,7 +16,8 @@ map <C-n> :NERDTreeToggle<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-
+" CtrlP
+Plug 'kien/ctrlp.vim'
 
 " Distraction free
 Plug 'junegunn/goyo.vim'
@@ -26,15 +25,20 @@ Plug 'junegunn/goyo.vim'
 " Colorthemes
 Plug 'iCyMind/NeoSolarized'
 Plug 'tomasr/molokai'
+Plug 'junegunn/seoul256.vim'
 
 " Language pack
 Plug 'sheerun/vim-polyglot'
 
 " Autcomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 
 call plug#end()
+
+""" Python dev setup """
+let g:python3_host_prog = '/home/gabriel/Code/neovimVenv/bin/python'
 
 """ CtrlP setup
 " Open file menu
@@ -44,18 +48,13 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 " Open most recently used files
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
+" colorscheme 
+let g:seoul256_background = 233 " 233 (darkest) ~ 239 (lightest)
+colorscheme seoul256
+set background=dark
 
 " Set 24-bit colors
 set termguicolors
-
-" colorscheme 
-colorscheme molokai
-
-" NeoSolarized
-let g:neosolarized_contrast = "normal"
-
-" Dark background
-set background=dark
 
 " Show line numbers
 set number
