@@ -11,6 +11,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 sudo apt-get -y install fonts-powerline
 curl -L https://github.com/dikiaap/dotfiles/raw/master/.oh-my-zsh/themes/oxide.zsh-theme --output ~/.oh-my-zsh/themes/oxide.zsh-theme
 
+### tig
+sudo apt-get -y install tig
+
 ### nvim
 sudo apt-get install neovim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
