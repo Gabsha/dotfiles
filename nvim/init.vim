@@ -1,6 +1,6 @@
 
 " Map leader key
-" let mapleader="\<SPACE>"
+let mapleader="#"
 
 " Plugin setup
 call plug#begin()
@@ -10,7 +10,9 @@ Plug 'tpope/vim-sensible'
 
 " File manager
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
 map <C-n> :NERDTreeToggle<CR>
+Plug 'jlanzarotta/bufexplorer'
 
 " Fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -35,6 +37,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
+Plug 'posva/vim-vue'
+Plug 'pangloss/vim-javascript'
+
+" Javascript config
+let g:javascript_plugin_flow = 1
 
 call plug#end()
 

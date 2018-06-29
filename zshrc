@@ -14,6 +14,8 @@ ZSH_THEME="oxide"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
 # alias vim=/opt/vim80/bin/vim
+alias vim=nvim
+alias sudo='sudo '
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -95,3 +97,7 @@ DEFAULT_USER=gabriel
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_COMMAND="find -L"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
