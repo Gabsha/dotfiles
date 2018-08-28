@@ -19,8 +19,8 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill

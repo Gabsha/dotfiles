@@ -25,3 +25,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ### Emoji linux
 sudo add-apt-repository -y ppa:eosrei/fonts
 sudo apt update && sudo apt -y install fonts-twemoji-svginot 
+
+### i3-gap
+sudo apt-get -y install rofi compton nitrogen i3blocks
+sudo apt-get -y install fonts-font-awesome
