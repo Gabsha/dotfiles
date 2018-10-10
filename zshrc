@@ -99,6 +99,9 @@ DEFAULT_USER=gabriel
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Awesome font setup
+source ~/.fonts/*.sh
+
 # FZF setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'

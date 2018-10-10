@@ -71,8 +71,10 @@ Plug 'nvie/vim-flake8'
 
 
 " Powerline
-Plug 'powerline/powerline'
+" Plug 'powerline/powerline'
 " Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plug 'vim-airline/vim-airline'
 
 set clipboard=unnamed
 
@@ -121,7 +123,7 @@ endif
 
 
 
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$', '^__pycache__$[[dir]]'] "ignore files in NERDTree
 
 
 " Code folding
@@ -138,6 +140,8 @@ let g:SimpylFold_docstring_preview=1
 " Open most recently used files
 nnoremap <Leader>f :CtrlPMRUFiles<CR>
 
+set wildignore+=_env/**
+set wildignore+=.git/**
 
 " colorscheme
 colorscheme one

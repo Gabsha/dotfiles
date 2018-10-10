@@ -29,3 +29,4 @@ sudo apt update && sudo apt -y install fonts-twemoji-svginot
 ### i3-gap
 sudo apt-get -y install rofi compton nitrogen i3blocks
 sudo apt-get -y install fonts-font-awesome
+
