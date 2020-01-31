@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.yarn/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 # export TERM="xterm-256color"
@@ -14,14 +15,16 @@ export NVM_DIR="$HOME/.nvm"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster"
-ZSH_THEME="oxide"
+ZSH_THEME="agnoster"
+#ZSH_THEME="oxide"
+# ZSH_THEME='lambda'
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
 # alias vim=/opt/vim80/bin/vim
 alias vim=nvim
 alias sudo='sudo '
+alias itksnap=/home/gabriel/Software/itk-snap/itksnap-3.8.0-20190612-Linux-gcc64/bin/itksnap
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -100,7 +103,7 @@ DEFAULT_USER=gabriel
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Awesome font setup
-source ~/.fonts/*.sh
+# source ~/.fonts/*.sh
 
 # FZF setup
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -110,3 +113,16 @@ export FZF_DEFAULT_COMMAND="find -L"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="/home/gabriel/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Rust
+source $HOME/.cargo/env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/gabriel/google-cloud-sdk/path.zsh.inc' ]; then . '/home/gabriel/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/gabriel/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/gabriel/google-cloud-sdk/completion.zsh.inc'; fi
