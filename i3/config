@@ -17,6 +17,8 @@ floating_modifier $mod
 # Autostart
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
+exec_always /home/gabriel/Code/dotfiles/config_mouse.sh
+
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
