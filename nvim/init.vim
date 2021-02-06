@@ -22,6 +22,9 @@ Plug 'junegunn/goyo.vim'
 " Colorthemes
 Plug 'rakr/vim-one'
 
+" Semantic highlight python
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 " Completion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
