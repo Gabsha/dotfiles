@@ -4,7 +4,7 @@ let mapleader=" "
 
 " Plugin setup
 call plug#begin()
-
+:
 " Plugin everyone can agree on
 Plug 'tpope/vim-sensible'
 
@@ -22,12 +22,17 @@ Plug 'junegunn/goyo.vim'
 " Colorthemes
 Plug 'rakr/vim-one'
 
-" Semantic highlight python
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" Semantic highlight 
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " python
+Plug 'jackguo380/vim-lsp-cxx-highlight'                 " cxx
 
 " Completion and linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
+
+Plug 'liuchengxu/vista.vim'     " Symbol browser
+Plug 'ryanoasis/vim-devicons'   " Dev icons
+Plug 'itchyny/lightline.vim'    " status line
 
 call plug#end()
 
@@ -47,6 +52,7 @@ let g:ale_linters = {'python': ['pylint']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pylint_options = '--rcfile setup.cfg'
+let g:ale_disable_lsp = 1
 
 " Completion config
 nmap <silent> gd <Plug>(coc-definition)
@@ -59,6 +65,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Symbol browser
+let g:vista_default_executive = 'coc'
 
 " Navigation
 map <C-n> :NERDTreeToggle<CR>
@@ -77,10 +86,9 @@ au BufNewFile,BufRead *.py:
 
 set encoding=utf-8
 
-
 let g:ctrlp_custom_ignore = '\v[\/]\.(git)$'
 set wildignore+=_env/**,*/__pycache__/*,*/transient/*,*/test_output/*
-set wildignore+=.git/*
+set wildignore+=.git/*,_venv/*,*.a,*.o,_build/*
 
 " colorscheme
 colorscheme one
