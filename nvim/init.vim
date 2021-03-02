@@ -22,6 +22,7 @@ Plug 'junegunn/goyo.vim'
 " Colorthemes
 Plug 'rakr/vim-one'
 Plug 'srcery-colors/srcery-vim'
+Plug 'lighthaus-theme/vim-lighthaus'
 
 " Semantic highlight 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " python
@@ -43,6 +44,7 @@ set clipboard=unnamed
 nmap <C-P> :GFiles<CR>
 nmap <C-B> :Buffers<CR>
 
+
 """ Python dev setup 
 let g:python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
 let g:python3_host_prog = '/home/gabriel/Code/pyvenv/bin/python'
@@ -56,6 +58,9 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_python_pylint_options = '--rcfile setup.cfg'
 let g:ale_disable_lsp = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_column_always = 1
 
 " Completion config
 nmap <silent> gd <Plug>(coc-definition)
@@ -71,6 +76,8 @@ nnoremap <C-H> <C-W><C-H>
 
 " Symbol browser
 let g:vista_default_executive = 'coc'
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+nmap <F8> :Vista!!<CR>
 
 " Navigation
 map <C-n> :NERDTreeToggle<CR>
@@ -92,20 +99,32 @@ set smartindent  " Auto indent new lines
 set encoding=utf-8
 
 au Filetype cpp set tabstop=4 softtabstop=4 shiftwidth=4 
+set guifont=Hack\ Regular\ 11
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git)$'
 set wildignore+=_env/**,*/__pycache__/*,*/transient/*,*/test_output/*
 set wildignore+=.git/*,_venv/*,*.a,*.o,_build/*
 
 " colorscheme
-colorscheme one
+colorscheme lighthaus
 set background=dark
 set termguicolors
+let g:lightline = {
+\ 'colorscheme': 'lighthaus',
+\ }
+hi Normal guibg=NONE ctermbg=NONE
 
 " Transparency from terminal
 hi Normal guibg=NONE ctermbg=NONE
 
 " Tab completion
+set number       " show line numbers
+set expandtab    " Tabs to spaces
+set smartindent  " Auto indent new lines
+set cmdheight=1  " More space to display messages
+set signcolumn=yes " Keep signcolumn open
+
+" Coc Tab Compleltion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
