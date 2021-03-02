@@ -1,5 +1,3 @@
-
-
 # Modifier
 set $mod Mod4
 set $sup Mod1
@@ -8,15 +6,22 @@ set $sup Mod1
 font pango:System San Francisco Display 11
 
 # Gaps
-gaps inner 10
-gaps outer 0
+gaps inner 5
+gaps outer 5
+smart_gaps on
+smart_borders on
+
+# Remove window header. You can also use any non-zero value if you'd like to have a border
+for_window [class=".*"] border pixel 0
+for_window [title="Haruspex"] floating enable
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Autostart
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton
+exec --no-startup-id picom
+exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
 exec_always /home/gabriel/Code/dotfiles/config_mouse.sh
 
 
@@ -33,7 +38,7 @@ bindsym $mod+Ctrl+l i3lock
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -width 100 -padding 800 -opacity "80" -bw 0 -bc "$base01" -bg "$base02" -fg "$base07" -hlbg "$base05" -columns 4 -font "System San Francisco Display 18" -hlfg "#9575cd"
-bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -width 70 -padding 800 -opacity "80" -columns 2 -font "System San Francisco Display 18"
+bindsym $mod+space exec rofi -show run -lines 10 -eh 2 -width 70 -padding 800 -opacity "80" -columns 2 -font "System San Francisco Display 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -41,10 +46,10 @@ bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -width 70 -padding 800 -opaci
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -53,10 +58,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -65,7 +70,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+" split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -79,7 +84,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -88,7 +93,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Give workspace names
 set $ws1 "1: Firefox "

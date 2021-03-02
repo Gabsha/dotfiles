@@ -21,6 +21,7 @@ Plug 'junegunn/goyo.vim'
 
 " Colorthemes
 Plug 'rakr/vim-one'
+Plug 'srcery-colors/srcery-vim'
 
 " Semantic highlight 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " python
@@ -47,7 +48,9 @@ let g:python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
 let g:python3_host_prog = '/home/gabriel/Code/pyvenv/bin/python'
 
 " Config ALE
-let g:ale_fixers = {'python' : ['autopep8', 'isort']}
+let g:ale_fixers = {'python' : ['black', 'isort'], 'cpp' : ['clang-format']}
+
+" let g:ale_fixers = {'python' : ['autopep8', 'isort']}
 let g:ale_linters = {'python': ['pylint']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -72,6 +75,7 @@ let g:vista_default_executive = 'coc'
 " Navigation
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
 let NERDTreeIgnore=['.git', '.pytest_cache', '\.pyc$', '\~$', '^__pycache__$[[dir]]'] "ignore files in NERDTree
 
 " Python setup
@@ -80,11 +84,14 @@ au BufNewFile,BufRead *.py:
     \ set softtabstop=4
     \ set shiftwidth=4
     \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
     \ set fileformat=unix
 
+set number       " show line numbers
+set expandtab    " Tabs to spaces
+set smartindent  " Auto indent new lines
 set encoding=utf-8
+
+au Filetype cpp set tabstop=4 softtabstop=4 shiftwidth=4 
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git)$'
 set wildignore+=_env/**,*/__pycache__/*,*/transient/*,*/test_output/*
@@ -95,10 +102,45 @@ colorscheme one
 set background=dark
 set termguicolors
 
-set number       " show line numbers
-set expandtab    " Tabs to spaces
-set smartindent  " Auto indent new lines
+" Transparency from terminal
+hi Normal guibg=NONE ctermbg=NONE
 
+" Tab completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Configure lightline
+let g:lightline = {
+ \ 'colorscheme': 'seoul256',
+ \ 'active': {
+ \   'left': [ [ 'mode', 'paste' ],
+ \             [ 'readonly', 'relativepath', 'modified', 'helloworld' ] ]
+ \ },
+ \ }
 
 """ Virtualenv setup
 py << EOF
