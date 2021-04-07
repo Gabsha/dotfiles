@@ -32,6 +32,9 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'                 " cxx
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 
+" TDD
+Plug 'mgedmin/coverage-highlight.vim'
+
 Plug 'liuchengxu/vista.vim'     " Symbol browser
 Plug 'ryanoasis/vim-devicons'   " Dev icons
 Plug 'itchyny/lightline.vim'    " status line
@@ -61,6 +64,7 @@ let g:ale_disable_lsp = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
+highlight clear SignColumn " Reset signcolumn background to transparent
 
 " Completion config
 nmap <silent> gd <Plug>(coc-definition)
@@ -73,6 +77,19 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Coverage
+let g:show_coverage = 0
+function! ToggleCoverage()
+        if g:show_coverage
+                :HighlightCoverageOff
+                let g:show_coverage = 0
+        else
+                :HighlightCoverage
+                let g:show_coverage = 1
+        endif
+endfunction
+nnoremap <silent> <leader>g :call ToggleCoverage()<cr><cr>
 
 " Symbol browser
 let g:vista_default_executive = 'coc'
@@ -93,6 +110,9 @@ au BufNewFile,BufRead *.py:
     \ set textwidth=79
     \ set fileformat=unix
 
+" YAML setup
+au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 set number       " show line numbers
 set expandtab    " Tabs to spaces
 set smartindent  " Auto indent new lines
@@ -104,9 +124,10 @@ set guifont=Hack\ Regular\ 11
 let g:ctrlp_custom_ignore = '\v[\/]\.(git)$'
 set wildignore+=_env/**,*/__pycache__/*,*/transient/*,*/test_output/*
 set wildignore+=.git/*,_venv/*,*.a,*.o,_build/*
+set wildignore+=_*/*
 
 " colorscheme
-colorscheme lighthaus
+colorscheme srcery
 set background=dark
 set termguicolors
 let g:lightline = {
@@ -160,6 +181,10 @@ let g:lightline = {
  \             [ 'readonly', 'relativepath', 'modified', 'helloworld' ] ]
  \ },
  \ }
+
+""" Execute per project vimrc file
+set exrc
+set secure
 
 """ Virtualenv setup
 py << EOF
