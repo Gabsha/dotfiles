@@ -18,6 +18,7 @@ Plug 'junegunn/fzf.vim'
 
 " Plug 'kien/ctrlp.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'kevinoid/vim-jsonc'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -118,6 +119,8 @@ set smartindent  " Auto indent new lines
 set encoding=utf-8
 set cmdheight=1  " More space to display messages
 set signcolumn=yes " Keep signcolumn open
+
+"autocmd FileType json autocmd BufWritePre <buffer> %!python -m json.tool
 
 " Python setup
 au BufNewFile,BufRead *.py:

@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:~/.yarn/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 # export TERM="xterm-256color"
@@ -15,6 +15,7 @@ ZSH_THEME="oxide"
 
 # alias vim=/opt/vim80/bin/vim
 alias vim=nvim
+alias vim=~/Applications/nvim.appimage
 alias sudo='sudo '
 
 # Uncomment the following line to use case-sensitive completion.
@@ -94,7 +95,7 @@ DEFAULT_USER=gabriel
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Awesome font setup
-source ~/.fonts/*.sh
+# source ~/.fonts/*.sh
 
 # Google cloud
 # The next line updates PATH for the Google Cloud SDK.
