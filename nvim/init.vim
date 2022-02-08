@@ -22,6 +22,7 @@ Plug 'kevinoid/vim-jsonc'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Colorthemes
 Plug 'rakr/vim-one'
@@ -64,9 +65,8 @@ let g:python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
 let g:python3_host_prog = '/home/gabriel/Code/pyvenv/bin/python'
 
 " Config ALE
-let g:ale_fixers = {'python' : ['black', 'isort'], 'cpp' : ['clang-format']}
-
-" let g:ale_fixers = {'python' : ['autopep8', 'isort']}
+"let g:ale_fixers = {'python' : ['black', 'isort'], 'cpp' : ['clang-format']}
+let g:ale_fixers = {'python' : ['black', 'isort']}
 let g:ale_linters = {'python': ['flake8']}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -76,8 +76,9 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_column_always = 1
 
-" Completion config
-nmap <silent> gd <Plug>(coc-definition)nmap <silent> gy <Plug>(coc-type-definition)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
@@ -109,7 +110,7 @@ nmap <F8> :Vista!!<CR>
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
-let NERDTreeIgnore=['.git', '.pytest_cache', '\.pyc$', '\~$', '^__pycache__$[[dir]]'] "ignore files in NERDTree
+let NERDTreeIgnore=['.git$[[dir]]', '_venv', '.egg-info$[[dir]]', '.eggs$[[dir]]','.pytest_cache', '\.pyc$', '\~$', '^__pycache__$[[dir]]'] "ignore files in NERDTree
 let g:NERDDefaultAlign='left'
 
 " Base 
@@ -131,6 +132,9 @@ au BufNewFile,BufRead *.py:
 
 let python_highlight_all = 1
 
+" Log file setup
+au BufNewFile,BufRead *.log set filetype=log
+
 " YAML setup
 au FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au Filetype cpp set tabstop=4 softtabstop=4 shiftwidth=4 
@@ -142,14 +146,14 @@ set wildignore+=_*/*
 
 " colorscheme
 syntax on
-colorscheme onedark
+colorscheme one
 if has('termguicolors')
-  set termguicolors
+	set termguicolors
 endif
 
 " Configure lightline
 let g:lightline = {
- \ 'colorscheme': 'onedark',
+ \ 'colorscheme': 'default',
  \ 'active': {
  \   'left': [ [ 'mode', 'paste' ],
  \             [ 'readonly', 'relativepath', 'modified', 'helloworld' ] ]
@@ -158,7 +162,11 @@ let g:lightline = {
 
 
 " Terminal mode
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
+if has("nvim")
+  au TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
+  au FileType fzf tunmap <buffer> <Esc>
+endif
 
 " Coc Tab Completion
 inoremap <silent><expr> <TAB>

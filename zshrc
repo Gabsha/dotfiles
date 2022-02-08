@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:~/.yarn/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.yarn/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 # export TERM="xterm-256color"
@@ -14,10 +14,10 @@ ZSH_THEME="oxide"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
 # alias vim=/opt/vim80/bin/vim
+alias nvim=~/Applications/nvim.appimage
 alias vim=nvim
-alias vim=~/Applications/nvim.appimage
 alias sudo='sudo '
-
+alias sa='source _venv/bin/activate'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -60,6 +60,9 @@ alias sudo='sudo '
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#export NVM_LAZY_LOAD=true # From zsh-nvm plugin
+#export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
+#plugins=(git zsh-nvm)
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -105,7 +108,8 @@ if [ -f '/home/gabriel/google-cloud-sdk/path.zsh.inc' ]; then . '/home/gabriel/g
 if [ -f '/home/gabriel/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/gabriel/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Add cuda library path
-export LD_LIBRARY_PATH=$LD_LIBRARY:/usr/local/cuda-10.1/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.2/lib64
 
 # Add plantuml
 export PLANTUML=$HOME/Software/plantuml/plantuml.1.2020.19.jar
