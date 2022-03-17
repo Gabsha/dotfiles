@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="application/nifti">
-  <glob pattern="*.nii.gz"/>
-  <glob pattern="*.nii"/>
-  <generic-icon name="brain"/>
-</mime-type>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+        <mime-type type="application/nifti">
+          <glob pattern="*.nii.gz"/>
+          <glob pattern="*.nii"/>
+          <generic-icon name="brain"/>
+        </mime-type>
+</mime-info>

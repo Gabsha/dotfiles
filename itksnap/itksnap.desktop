@@ -3,7 +3,8 @@ Terminal=false
 Icon=brain
 Type=Application
 Categories=Application;Utility;
-Exec=env QT_SCALE_FACTOR=0.5 itksnap %f
+#Exec=env QT_SCALE_FACTOR=0.5 itksnap %f
+Exec=itksnap %f
 MimeType=application/nifti;
 Name=itksnap
 Comment=Medical image viewer
