@@ -6,18 +6,12 @@ map('n', 'sv', ':so $MYVIMRC<CR>', {noremap = true})
 -- Nerdtree
 map('n', '<C-n>', ':NERDTreeToggle<CR>', {noremap = true})
 
--- Telescope
-map('n', '<C-p>', '<cmd>Telescope find_files<CR>', {noremap = true})
-map('n', '<C-b>', '<cmd>Telescope buffers<CR>', {noremap = true})
-map('n', '<C-f>', '<cmd>Telescope live_grep<CR>', {noremap = true})
 
 -- Split navigation
 map('n', '<C-J>', '<C-W><C-J>', {noremap = true})
 map('n', '<C-K>', '<C-W><C-K>', {noremap = true})
 map('n', '<C-L>', '<C-W><C-L>', {noremap = true})
 map('n', '<C-H>', '<C-W><C-H>', {noremap = true})
-
-
 -- Diagnostics
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -71,67 +65,95 @@ require('lspconfig')['pyright'].setup {
 }
 --end
 
+-- HTML
+local html_cap = vim.lsp.protocol.make_client_capabilities()
+html_cap.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+  on_attach = on_attach,
+  capabilities = html_cap,
+  filetypes = { 'html', 'htmldjango' },
+  settings = { indent_size = 2 },
+}
+
+-- Example : https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
+--require'lspconfig'.tsserver.setup{
+--        on_attach = function(client, bufnr)
+--                client.resolved_capabilities.document_formatting = false
+--                client.resolved_capabilities.document_range_formatting = false
+--                on_attach(client, bufnr)
+--        end
+--}
+
+-- Check here for example of volar configuration : https://github.com/johnsoncodehk/volar/discussions/606
 require'lspconfig'.volar.setup{
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { 'vue', 'typescript', 'javascript', 'json' },
-  --init_options = {
-  --  typescript = {
-  --    serverPath = '/home/gabriel/.local/share/yarn/global/node_modules/typescript/lib/tsserverlibrary.js'
-      --serverPath = '/path/to/.npm/lib/node_modules/typescript/lib/tsserverlib.js'
-    --}
-  --}
+  filetypes = { 'typescript', 'javascript','vue', 'json' },
+  --filetypes = { 'vue' }, -- let eslint handle the rest ?
+  -- See here options for findings tsserver : https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/volar.lua#L97-L135
+  init_options = {
+    typescript = {
+      serverPath = '/home/gabriel/.config/yarn/global/node_modules/typescript/lib/tsserverlibrary.js'
+    }
+  }
 }
-
-require'lspconfig'.eslint.setup{}
-
--- luasnip setup
-local luasnip = require 'luasnip'
-
--- nvim-cmp setup
---local cmp = require 'cmp'
---cmp.setup {
---  snippet = {
---    expand = function(args)
---      require('luasnip').lsp_expand(args.body)
---    end,
---  },
---  mapping = {
---    ['<C-p>'] = cmp.mapping.select_prev_item(),
---    ['<C-n>'] = cmp.mapping.select_next_item(),
---    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
---    ['<C-f>'] = cmp.mapping.scroll_docs(4),
---    ['<C-Space>'] = cmp.mapping.complete(),
---    ['<C-e>'] = cmp.mapping.close(),
---    ['<CR>'] = cmp.mapping.confirm {
---      behavior = cmp.ConfirmBehavior.Replace,
---      select = true,
---    },
---    ['<Tab>'] = function(fallback)
---      if cmp.visible() then
---        cmp.select_next_item()
---      elseif luasnip.expand_or_jumpable() then
---        luasnip.expand_or_jump()
---      else
---        fallback()
---      end
---    end,
---    ['<S-Tab>'] = function(fallback)
---      if cmp.visible() then
---        cmp.select_prev_item()
---      elseif luasnip.jumpable(-1) then
---        luasnip.jump(-1)
---      else
---        fallback()
---      end
---    end,
---  },
---  sources = {
---    { name = 'nvim_lsp' },
---    { name = 'luasnip' },
---  }, 
+--local eslint_ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" } -- Removed vue
+--require'lspconfig'.eslint.setup{
+--  filetypes = eslint_ft
 --}
 
+-- luasnip & nvim-cmp setup
+local luasnip = require 'luasnip'
+local cmp = require 'cmp'
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end,
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  }, {
+          {name = 'buffer'},
+  }), 
+}
+
+-- Load snippets
+--require"luasnip/loaders/from_vscode".load({include = {"html"}})
+require("luasnip.loaders.from_vscode").lazy_load()
 -- setup gutter signs
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -147,6 +169,10 @@ local setup_finder = function(params)
 end
 require("null-ls").setup({
     sources = {
+        --require("null-ls").builtins.formatting.eslint.with({
+        --        prefer_local = "node_modules/.bin",
+        --        filetypes = { "typescript", "javascript", "json" }
+        --}),
         require("null-ls").builtins.formatting.black,
         require("null-ls").builtins.formatting.isort.with({
                 cwd = setup_finder,
@@ -155,6 +181,7 @@ require("null-ls").setup({
         }),
     },
     on_attach = function(client)
+        -- Format on save
         if client.resolved_capabilities.document_formatting then
             vim.cmd([[
             augroup LspFormatting
