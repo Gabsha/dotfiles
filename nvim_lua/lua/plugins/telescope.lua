@@ -8,18 +8,17 @@ map('n', '<c-p>', '<cmd>Telescope find_files<CR>', opts)
 map('n', '<C-b>', '<cmd>Telescope buffers<CR>', opts)
 map('n', '<C-f>', '<cmd>Telescope live_grep<CR>', opts)
 
-
 -- Setup
-require("telescope").setup{
+require('telescope').setup {
   defaults = {
-    file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = { 'node_modules', 'yarn.lock', '_venv', '__pycache__' },
     mappings = {
       i = {
-        ["<esc>"] = actions.close
+        ['<esc>'] = actions.close,
       },
     },
   },
-   pickers = {
+  pickers = {
     buffers = {
       ignore_current_buffer = true,
       sort_mru = true,

@@ -1,6 +1,6 @@
-require'nvim-treesitter.configs'.setup{
+require('nvim-treesitter.configs').setup {
   context_commentstring = {
-          enable = true
+    enable = true,
   },
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   -- ensure_installed = "maintained",

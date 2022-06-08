@@ -2,7 +2,15 @@ local M = {}
 
 local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
-local opts = { noremap=true, silent=true }
+-- Highlight line numbers for diagnostic
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+-- Define on attach maps
+local opts = { noremap = true, silent = true }
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function M.on_attach(client, bufnr)
@@ -18,7 +26,13 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    'n',
+    '<space>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+    opts
+  )
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -30,7 +44,7 @@ function M.on_attach(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = formatting_augroup,
       buffer = bufnr,
-      callback = vim.lsp.buf.formatting_sync
+      callback = vim.lsp.buf.formatting_sync,
     })
   end
 
@@ -43,7 +57,6 @@ function M.on_attach(client, bufnr)
   --    ]])
   --end
 end
-
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 --M.capabilities = require('cmp_nvim_lsp').update_capabilities(M.capabilities)

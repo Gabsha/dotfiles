@@ -18,8 +18,7 @@ vim.cmd [[packadd packer.nvim]]
 
 -- Load plugins
 return require('packer').startup(function()
-
-  use 'wbthomason/packer.nvim'	-- Packer can manage itself
+  use 'wbthomason/packer.nvim' -- Packer can manage itself
 
   -- Colorthemes
   use 'rakr/vim-one'
@@ -28,13 +27,16 @@ return require('packer').startup(function()
   use 'morhetz/gruvbox'
   use 'joshdick/onedark.vim'
   use 'olimorris/onedarkpro.nvim'
-  use "rebelot/kanagawa.nvim"
+  use 'rebelot/kanagawa.nvim'
 
   use 'scrooloose/nerdtree'
 
   -- Comments
   use 'scrooloose/nerdcommenter'
   use 'tpope/vim-commentary'
+
+  -- TDD
+  use 'mgedmin/coverage-highlight.vim'
 
   -- Fuzzy finder
   use {
@@ -47,13 +49,13 @@ return require('packer').startup(function()
 
   -- LSP
   use {
-    'neovim/nvim-lspconfig',   -- Collection of configurations for the built-in LSP client
+    'neovim/nvim-lspconfig', -- Collection of configurations for the built-in LSP client
     config = function()
-      require'plugins.lsp'
-      require'plugins.lsp.volar'
-      require'plugins.lsp.pyright'
-      require'plugins.lsp.html'
-      require'plugins.lsp.null_ls'
+      require 'plugins.lsp'
+      require 'plugins.lsp.volar'
+      require 'plugins.lsp.pyright'
+      require 'plugins.lsp.html'
+      require 'plugins.lsp.null_ls'
     end,
     requires = {
       {
@@ -69,58 +71,45 @@ return require('packer').startup(function()
           require 'plugins.cmp'
         end,
       },
-    }
-    --requires = {
-    -- 'hrsh7th/nvim-cmp',        -- Autocompletion plugin
-    -- requires = {
-    --   'hrsh7th/cmp-nvim-lsp',    -- LSP source for nvim-cmp
-    --   'saadparwaiz1/cmp_luasnip',
-    -- },
-    -- config = function()
-    --   require'plugins.cmp'
-    -- end
-    --}, -- Snippets source for nvim-cmp
-   
+    },
   }
 
-  use 'L3MON4D3/LuaSnip'        -- Snippets plugin
-  use "rafamadriz/friendly-snippets"
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'rafamadriz/friendly-snippets'
 
   -- Highlighting
-  use { 
-    'nvim-treesitter/nvim-treesitter', 
+  use {
+    'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
-      require'plugins.treesitter'
+      require 'plugins.treesitter'
     end,
     requires = {
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/playground',
-    }
+    },
   }
 
   -- Formatter
   use 'jose-elias-alvarez/null-ls.nvim' --
-  
+
   -- Git
   -- use 'airblade/vim-gitgutter'
   use 'tpope/vim-fugitive'
 
   -- Markdown
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+  use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
 
   -- Powerline
   use {
     'nvim-lualine/lualine.nvim',
     config = function()
-      require'plugins.lualine'
+      require 'plugins.lualine'
     end,
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
 
-  
   -- use 'liuchengxu/vista.vim'     -- Symbol browser
-  use 'ryanoasis/vim-devicons'   -- Dev icons
+  use 'ryanoasis/vim-devicons' -- Dev icons
   -- use 'itchyny/lightline.vim'    -- status line
-
 end)
