@@ -1,6 +1,8 @@
 local M = {}
 
+local formatting_augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
+local opts = { noremap=true, silent=true }
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function M.on_attach(client, bufnr)
@@ -22,4 +24,28 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  if client.supports_method 'textDocument/formatting' then
+    vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = bufnr }
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = formatting_augroup,
+      buffer = bufnr,
+      callback = vim.lsp.buf.formatting_sync
+    })
+  end
+
+  --if client.resolved_capabilities.document_formatting then
+  --    vim.cmd([[
+  --    augroup LspFormatting
+  --        autocmd! * <buffer>
+  --        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+  --    augroup END
+  --    ]])
+  --end
 end
+
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+--M.capabilities = require('cmp_nvim_lsp').update_capabilities(M.capabilities)
+
+return M

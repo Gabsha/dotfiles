@@ -46,10 +46,43 @@ return require('packer').startup(function()
   }
 
   -- LSP
-  use 'neovim/nvim-lspconfig'   -- Collection of configurations for the built-in LSP client
-  use 'hrsh7th/nvim-cmp'        -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp'    -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip'-- Snippets source for nvim-cmp
+  use {
+    'neovim/nvim-lspconfig',   -- Collection of configurations for the built-in LSP client
+    config = function()
+      require'plugins.lsp'
+      require'plugins.lsp.volar'
+      require'plugins.lsp.pyright'
+      require'plugins.lsp.html'
+      require'plugins.lsp.null_ls'
+    end,
+    requires = {
+      {
+        'hrsh7th/nvim-cmp',
+        requires = {
+          'hrsh7th/cmp-nvim-lsp',
+          'hrsh7th/cmp-buffer',
+          'hrsh7th/cmp-path',
+          'saadparwaiz1/cmp_luasnip',
+          'petertriho/cmp-git',
+        },
+        config = function()
+          require 'plugins.cmp'
+        end,
+      },
+    }
+    --requires = {
+    -- 'hrsh7th/nvim-cmp',        -- Autocompletion plugin
+    -- requires = {
+    --   'hrsh7th/cmp-nvim-lsp',    -- LSP source for nvim-cmp
+    --   'saadparwaiz1/cmp_luasnip',
+    -- },
+    -- config = function()
+    --   require'plugins.cmp'
+    -- end
+    --}, -- Snippets source for nvim-cmp
+   
+  }
+
   use 'L3MON4D3/LuaSnip'        -- Snippets plugin
   use "rafamadriz/friendly-snippets"
 
