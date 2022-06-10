@@ -1,22 +1,16 @@
 #!/bin/bash
 
 DOTFILES_DIR=~/Code/dotfiles
+CONFIG_DIR=${DOTFILES_DIR}/config
 
-# Delete existing stuff
-#sudo rm -rf ~/.vim
-#sudo rm -rf ~/.i3
-#sudo rm -rf ~/zshrc
-#sudo rm -rf ~/.config/nvim/init.vim
-#sudo rm -rf ~/.tmux.conf
+for file in $CONFIG_DIR/*; do
+  target=~/.config/
+  filename=$(echo $file | rev | cut -d'/' -f-1 | rev)
+  echo "Creating symlink from $filename to $target"
+  ln -sf -T $CONFIG_DIR/$filename ~/.config/$filename 
+done
 
-if [ ! -d ~/.config/nvim ]; then
-  mkdir -p ~/.config/nvim
-fi
 
 # Symlinks files
-ln -sf $DOTFILES_DIR/vim ~/.vim
-ln -sf $DOTFILES_DIR/i3 ~/.i3
 ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
-ln -sf $DOTFILES_DIR/nvim/init.vim ~/.config/nvim/init.vim
-ln -sf $DOTFILES_DIR/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -sf $DOTFILES_DIR/tmux.conf ~/.tmux.conf
