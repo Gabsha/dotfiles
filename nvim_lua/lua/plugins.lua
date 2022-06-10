@@ -56,6 +56,7 @@ return require('packer').startup(function()
       require 'plugins.lsp.pyright'
       require 'plugins.lsp.html'
       require 'plugins.lsp.null_ls'
+      require 'plugins.lsp.json'
     end,
     requires = {
       {

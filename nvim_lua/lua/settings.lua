@@ -26,4 +26,4 @@ opt.cursorline = true -- Highlight current line
 opt.showmatch = true -- Highlight parenthesis
 
 -- Clipboard
-opt.clipboard = { 'unnamed', 'unnamedplus' }
+opt.clipboard = { 'unnamed' } -- , 'unnamedplus' }
