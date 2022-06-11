@@ -11,6 +11,9 @@ for file in $CONFIG_DIR/*; do
 done
 
 
+
+
 # Symlinks files
 ln -sf $DOTFILES_DIR/zshrc ~/.zshrc
 ln -sf $DOTFILES_DIR/tmux.conf ~/.tmux.conf
+ln -sf -T $DOTFILES_DIR/i3 ~/.i3
