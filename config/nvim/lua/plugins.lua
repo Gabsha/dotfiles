@@ -57,6 +57,7 @@ return require('packer').startup(function()
       require 'plugins.lsp.html'
       require 'plugins.lsp.null_ls'
       require 'plugins.lsp.json'
+      require 'plugins.lsp.rust-analyzer'
     end,
     requires = {
       {
