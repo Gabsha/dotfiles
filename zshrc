@@ -18,6 +18,7 @@ alias nvim=~/Applications/nvim.appimage
 alias vim=nvim
 alias sudo='sudo '
 alias sa='source _venv/bin/activate'
+alias icat="kitty +kitten icat"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
