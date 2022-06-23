@@ -1,5 +1,9 @@
 local map = vim.api.nvim_set_keymap
 
+-- Disable accidental help menu popup
+map('n', '<F1>', '<nop>', { noremap = true })
+map('i', '<F1>', '<nop>', { noremap = true })
+
 -- Quick Edit
 map('n', 'ev', ':e $MYVIMRC<CR>', { noremap = true })
 map('n', 'sv', ':so $MYVIMRC<CR>', { noremap = true })

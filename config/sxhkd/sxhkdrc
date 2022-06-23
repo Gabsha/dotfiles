@@ -23,7 +23,7 @@ super + Return
 
 # program launcher
 super + space
-	rofi -modi "drun" -show drun
+	rofi -modi "drun,window,ssh" -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
