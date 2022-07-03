@@ -58,6 +58,7 @@ return require('packer').startup(function()
       require 'plugins.lsp.null_ls'
       require 'plugins.lsp.json'
       require 'plugins.lsp.rust-analyzer'
+      require 'plugins.lsp.ccls'
     end,
     requires = {
       {
