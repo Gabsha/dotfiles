@@ -2,7 +2,7 @@
 require('lspconfig').volar.setup {
   on_attach = require('plugins.lsp').on_attach,
   capabilities = require('plugins.lsp').capabilities,
-  filetypes = { 'typescript', 'javascript', 'vue', 'json' },
+  filetypes = { 'vue' },
   --filetypes = { 'vue' }, -- let eslint handle the rest ?
   -- See here options for findings tsserver : https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/volar.lua#L97-L135
   init_options = {

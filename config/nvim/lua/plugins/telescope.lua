@@ -6,7 +6,7 @@ local actions = require 'telescope.actions'
 local opts = { noremap = true }
 map('n', '<c-p>', '<cmd>Telescope find_files<CR>', opts)
 map('n', '<C-b>', '<cmd>Telescope buffers<CR>', opts)
-map('n', '<C-f>', '<cmd>Telescope live_grep<CR>', opts)
+map('n', '<C-f>', '<cmd>Telescope live_grep hidden=true<CR>', opts)
 
 -- Setup
 require('telescope').setup {
@@ -19,6 +19,11 @@ require('telescope').setup {
     },
   },
   pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return { '--hidden' }
+      end,
+    },
     buffers = {
       ignore_current_buffer = true,
       sort_mru = true,

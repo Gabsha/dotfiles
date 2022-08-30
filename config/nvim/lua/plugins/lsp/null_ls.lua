@@ -9,10 +9,8 @@ end
 
 null_ls.setup {
   sources = {
-    b.formatting.black,
-
+    b.formatting.black.with { cwd = setup_finder },
     b.formatting.isort.with { cwd = setup_finder },
-
     b.formatting.stylua.with {
       condition = function(utils)
         return utils.root_has_file 'stylua.toml'
