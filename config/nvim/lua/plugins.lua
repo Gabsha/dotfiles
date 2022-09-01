@@ -75,6 +75,7 @@ return require('packer').startup(function()
       require 'plugins.lsp'
       require 'plugins.lsp.volar'
       require 'plugins.lsp.js'
+      require 'plugins.lsp.eslint'
       require 'plugins.lsp.pyright'
       require 'plugins.lsp.html'
       require 'plugins.lsp.null_ls'
