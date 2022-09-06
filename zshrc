@@ -9,8 +9,9 @@ export ZSH=/home/gabriel/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="agnoster"
-ZSH_THEME="oxide"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="oxide"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
 # alias vim=/opt/vim80/bin/vim
@@ -64,7 +65,7 @@ alias icat="kitty +kitten icat"
 #export NVM_LAZY_LOAD=true # From zsh-nvm plugin
 #export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
 #plugins=(git zsh-nvm)
-plugins=(git)
+plugins=(git fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,11 +78,11 @@ DEFAULT_USER=gabriel
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='nano'
+ else
+   export EDITOR='nano'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
