@@ -78,8 +78,16 @@ return require('packer').startup(function()
     },
   }
 
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use 'rafamadriz/friendly-snippets'
+  -- Snippets plugin
+  use {
+    'L3MON4D3/LuaSnip',
+    config = function()
+      require 'plugins.luasnip'
+    end,
+    requires = {
+      'rafamadriz/friendly-snippets',
+    },
+  }
 
   -- Highlighting
   use {
