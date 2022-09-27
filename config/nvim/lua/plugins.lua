@@ -102,6 +102,17 @@ return require('packer').startup(function()
     },
   }
 
+  -- Documentation
+  use {
+    'danymat/neogen',
+    config = function()
+      require('neogen').setup {}
+    end,
+    requires = 'nvim-treesitter/nvim-treesitter',
+    -- Uncomment next line if you want to follow only stable versions
+    -- tag = "*"
+  }
+
   -- Formatter
   use 'jose-elias-alvarez/null-ls.nvim' --
 
@@ -121,7 +132,27 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
 
-  -- use 'liuchengxu/vista.vim'     -- Symbol browser
+  -- Symbols browser
+  use {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('symbols-outline').setup()
+    end,
+  }
+
+  -- Mind note taking
+  use {
+    'phaazon/mind.nvim',
+    branch = 'v2.2',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('mind').setup { ui = {
+        width = 45,
+      } }
+    end,
+  }
+
+  -- use 'liuchengxu/vista.vim'
   use 'ryanoasis/vim-devicons' -- Dev icons
   -- use 'itchyny/lightline.vim'    -- status line
 end)

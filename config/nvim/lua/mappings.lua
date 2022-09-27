@@ -17,9 +17,21 @@ map('n', '<C-K>', '<C-W><C-K>', { noremap = true })
 map('n', '<C-L>', '<C-W><C-L>', { noremap = true })
 map('n', '<C-H>', '<C-W><C-H>', { noremap = true })
 
+-- Coverage
+map('n', '<space>g', ':ToggleCoverage<CR>', { noremap = true })
+
+-- Symbols
+map('n', '<F8>', ':SymbolsOutline<CR>', { noremap = true })
+
+-- Notes
+local opts = { noremap = true, silent = true }
+map('n', '<F7>', '<cmd>lua require("mind").open_main()<CR>', opts)
+map('n', '<s-F7>', '<cmd>lua require("mind").close()<CR>', opts)
+map('n', '<F6>', '<cmd>lua require("mind").open_project()<CR>', opts)
+map('n', '<s-F6>', '<cmd>lua require("mind").open_project(true)<CR>', opts)
+
 -- Diagnostics
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
 map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)

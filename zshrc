@@ -20,6 +20,11 @@ alias vim=nvim
 alias sudo='sudo '
 alias sa='source _venv/bin/activate'
 alias icat="kitty +kitten icat"
+
+# Tmux alias
+alias tl="tmuxp load"
+alias tls="tmux ls"
+alias ta="tmux attach -t"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -37,7 +42,7 @@ alias icat="kitty +kitten icat"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+export DISABLE_AUTO_TITLE='true'
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -104,10 +109,11 @@ DEFAULT_USER=gabriel
 
 # Google cloud
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/gabriel/google-cloud-sdk/path.zsh.inc' ]; then . '/home/gabriel/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/gabriel/Software/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '/home/gabriel/Software/gcloud/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/gabriel/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/gabriel/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/home/gabriel/Software/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/gabriel/Software/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+
 
 # Add cuda library path
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11/lib64

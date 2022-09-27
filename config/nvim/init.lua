@@ -13,11 +13,11 @@ g.mapleader = ' '
 
 -- Python
 g.python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
-g.python3_host_prog = '/home/gabriel/Code/pyvenv/bin/python'
+g.python3_host_prog = '/home/gabriel/Code/pynvim/bin/python'
 
 -- NerdTree
 vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeWinSize = 50
+--vim.g.NERDTreeWinSize = 50
 vim.g.NERDTreeIgnore = { '.git$[[dir]]', '_venv', '.egg-info$[[dir]]', '.eggs$[[dir]]', '.pytest_cache', '.pyc' }
 vim.g.NERDDefaultAlign = 'left'
 
