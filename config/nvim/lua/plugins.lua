@@ -61,6 +61,7 @@ return require('packer').startup(function()
       require 'plugins.lsp.rust-analyzer'
       require 'plugins.lsp.ccls'
       require 'plugins.lsp.astro'
+      require 'plugins.lsp.tailwind'
     end,
     requires = {
       {
