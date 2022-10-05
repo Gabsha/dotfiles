@@ -11,7 +11,7 @@ map('n', '<C-f>', '<cmd>Telescope live_grep hidden=true<CR>', opts)
 -- Setup
 require('telescope').setup {
   defaults = {
-    file_ignore_patterns = { 'node_modules', 'yarn.lock', '_venv', '__pycache__' },
+    file_ignore_patterns = { '.git/', 'node_modules', 'yarn.lock', '_venv', '__pycache__' },
     mappings = {
       i = {
         ['<esc>'] = actions.close,
@@ -19,6 +19,9 @@ require('telescope').setup {
     },
   },
   pickers = {
+    find_files = {
+      hidden = true,
+    },
     live_grep = {
       additional_args = function(opts)
         return { '--hidden' }

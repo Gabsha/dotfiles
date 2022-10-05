@@ -3,7 +3,7 @@ local u = require 'null-ls.utils'
 local b = null_ls.builtins
 
 function setup_finder(params)
-  local cwd = u.root_pattern { 'setup.py' }(params.bufname)
+  local cwd = u.root_pattern { 'setup.py', 'pyproject.toml' }(params.bufname)
   return cwd
 end
 
@@ -11,6 +11,7 @@ null_ls.setup {
   sources = {
     b.formatting.black.with { cwd = setup_finder },
     b.formatting.isort.with { cwd = setup_finder },
+    b.diagnostics.flake8.with { cwd = setup_finder },
     b.formatting.stylua.with {
       condition = function(utils)
         return utils.root_has_file 'stylua.toml'
