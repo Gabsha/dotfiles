@@ -14,6 +14,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   }
 end
 
+vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
+
 vim.cmd [[packadd packer.nvim]]
 
 -- Load plugins
@@ -28,8 +30,27 @@ return require('packer').startup(function()
   use 'joshdick/onedark.vim'
   use 'olimorris/onedarkpro.nvim'
   use 'rebelot/kanagawa.nvim'
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function()
+      vim.g.catppuccin_flavour = 'mocha' -- latte, frappe, macchiato, mocha
+      require('catppuccin').setup()
+      -- vim.api.nvim_command 'colorscheme catppuccin'
+    end,
+  }
 
+  -- Nav
   use 'scrooloose/nerdtree'
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    },
+  }
 
   -- Comments
   use 'scrooloose/nerdcommenter'

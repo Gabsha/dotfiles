@@ -5,8 +5,9 @@ require 'term'
 
 local g = vim.g
 
-vim.cmd 'colorscheme kanagawa'
---vim.cmd 'colorscheme onedarkpro'
+-- vim.cmd 'colorscheme kanagawa'
+-- vim.cmd 'colorscheme onedarkpro'
+vim.cmd 'colorscheme catppuccin'
 
 -- Map space to leader
 g.mapleader = ' '

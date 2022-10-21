@@ -9,7 +9,8 @@ map('n', 'ev', ':e $MYVIMRC<CR>', { noremap = true })
 map('n', 'sv', ':so $MYVIMRC<CR>', { noremap = true })
 
 -- Nerdtree
-map('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true })
+--map('n', '<C-n>', ':NERDTreeToggle<CR>', { noremap = true })
+map('n', '<C-n>', ':Neotree toggle<CR>', { noremap = true })
 
 -- Split navigation
 map('n', '<C-J>', '<C-W><C-J>', { noremap = true })
