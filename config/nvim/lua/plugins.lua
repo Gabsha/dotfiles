@@ -147,7 +147,14 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
 
   -- Markdown
-  use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
+  -- install without yarn or npm
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = function()
+      vim.fn['mkdp#util#install']()
+    end,
+  }
+  --use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' }
 
   -- Powerline
   use {
