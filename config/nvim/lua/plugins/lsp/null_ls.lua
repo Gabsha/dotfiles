@@ -3,7 +3,7 @@ local u = require 'null-ls.utils'
 local b = null_ls.builtins
 
 function setup_finder(params)
-  local cwd = u.root_pattern { 'setup.py', 'pyproject.toml' }(params.bufname)
+  local cwd = u.root_pattern { 'setup.py', 'pyproject.toml', '_venv' }(params.bufname)
   return cwd
 end
 

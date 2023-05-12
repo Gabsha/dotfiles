@@ -30,7 +30,7 @@ function M.on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting_sync()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
   vim.api.nvim_buf_set_keymap(
     bufnr,
     'n',
@@ -43,7 +43,8 @@ function M.on_attach(client, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = formatting_augroup,
       buffer = bufnr,
-      callback = vim.lsp.buf.formatting_sync,
+      --callback = vim.lsp.buf.formatting_sync,
+      callback = vim.lsp.buf.format,
     })
   end
 
@@ -57,7 +58,8 @@ function M.on_attach(client, bufnr)
   --end
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+--M.capabilities = vim.lsp.protocol.make_client_capabilities()
 --M.capabilities = require('cmp_nvim_lsp').update_capabilities(M.capabilities)
+M.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 return M

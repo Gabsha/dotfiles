@@ -7,7 +7,8 @@ local g = vim.g
 
 -- vim.cmd 'colorscheme kanagawa'
 -- vim.cmd 'colorscheme onedarkpro'
-vim.cmd 'colorscheme catppuccin'
+--vim.cmd 'colorscheme catppuccin'
+ vim.cmd 'colorscheme tokyonight-night'
 
 -- Map space to leader
 g.mapleader = ' '

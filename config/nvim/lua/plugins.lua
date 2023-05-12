@@ -1,5 +1,5 @@
-local cmd = vim.cmd
 local fn = vim.fn
+local use = require'packer'.use
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
@@ -30,6 +30,7 @@ return require('packer').startup(function()
   use 'joshdick/onedark.vim'
   use 'olimorris/onedarkpro.nvim'
   use 'rebelot/kanagawa.nvim'
+  use 'folke/tokyonight.nvim'
   use {
     'catppuccin/nvim',
     as = 'catppuccin',
@@ -75,6 +76,7 @@ return require('packer').startup(function()
       require 'plugins.lsp'
       require 'plugins.lsp.volar'
       require 'plugins.lsp.js'
+      require 'plugins.lsp.luals'
       require 'plugins.lsp.eslint'
       require 'plugins.lsp.pyright'
       require 'plugins.lsp.html'
