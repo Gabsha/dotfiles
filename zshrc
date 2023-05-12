@@ -8,23 +8,13 @@ export ZSH=/home/gabriel/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster"
-#ZSH_THEME="oxide"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="oxide"
 ZSH_THEME="robbyrussell"
-#ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
-# alias vim=/opt/vim80/bin/vim
-alias nvim=~/Applications/nvim.appimage
-alias vim=nvim
-alias sudo='sudo '
-alias sa='source _venv/bin/activate'
-alias icat="kitty +kitten icat"
 
-# Tmux alias
-alias tl="tmuxp load"
-alias tls="tmux ls"
-alias ta="tmux attach -t"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -70,7 +60,7 @@ export DISABLE_AUTO_TITLE='true'
 #export NVM_LAZY_LOAD=true # From zsh-nvm plugin
 #export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
 #plugins=(git zsh-nvm)
-plugins=(git fzf)
+plugins=(git fzf ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,7 +93,21 @@ DEFAULT_USER=gabriel
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias vim=/opt/vim80/bin/vim
+# alias nvim=~/Applications/nvim.appimage
+alias vim=nvim
+alias sudo='sudo '
+alias sa='source _venv/bin/activate'
+alias icat="kitty +kitten icat"
 
+# Tmux alias
+alias tl="tmuxp load"
+alias tls="tmux ls"
+alias ta="tmux attach -t"
+
+# Exa alias
+alias ls='exa --icons'
+alias ll='ls -al'
 # Awesome font setup
 # source ~/.fonts/*.sh
 
