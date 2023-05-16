@@ -3,19 +3,17 @@ require 'mappings'
 require 'settings'
 require 'term'
 
-local g = vim.g
-
 -- vim.cmd 'colorscheme kanagawa'
 -- vim.cmd 'colorscheme onedarkpro'
 --vim.cmd 'colorscheme catppuccin'
  vim.cmd 'colorscheme tokyonight-night'
 
 -- Map space to leader
-g.mapleader = ' '
+vim.g.mapleader = ' '
 
 -- Python
-g.python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
-g.python3_host_prog = '/home/gabriel/Code/pynvim/bin/python'
+vim.g.python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
+vim.g.python3_host_prog = '/home/gabriel/Code/pynvim/bin/python'
 
 -- NerdTree
 vim.g.NERDTreeShowHidden = 1

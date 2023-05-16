@@ -1,5 +1,5 @@
 local fn = vim.fn
-local use = require'packer'.use
+local use = require('packer').use
 
 -- Automatically install packer.nvim
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/opt/packer.nvim'
@@ -70,9 +70,11 @@ return require('packer').startup(function()
   }
 
   -- LSP
+  use 'folke/neodev.nvim'
   use {
     'neovim/nvim-lspconfig', -- Collection of configurations for the built-in LSP client
     config = function()
+      require('neodev').setup {} -- Need to be setup before lspconfig
       require 'plugins.lsp'
       require 'plugins.lsp.volar'
       require 'plugins.lsp.js'

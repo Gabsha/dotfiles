@@ -1,29 +1,27 @@
-local opt = vim.opt
-
 -- Identation
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 vim.opt.smartindent = true -- Auto indent new lines
 
 -- Ignore
-opt.wildignore = {
+vim.opt.wildignore = {
   '**/node_modules/**',
   '**/_venv/**',
   '**/coverage/**',
 }
 
 -- UI
-opt.wrap = false
+vim.opt.wrap = false
 
-opt.number = true
-opt.encoding = 'utf-8'
-opt.cmdheight = 1 -- More space to display messages
-opt.signcolumn = 'yes' -- Keep signcolumn open
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-opt.cursorline = true -- Highlight current line
-opt.showmatch = true -- Highlight parenthesis
+vim.opt.signcolumn = 'yes' -- Keep signcolumn open
+
+vim.opt.cursorline = true -- Highlight current line
+vim.opt.showmatch = true -- Highlight parenthesis
 
 -- Clipboard
-opt.clipboard = { 'unnamed' } -- , 'unnamedplus' }
+vim.opt.clipboard = { 'unnamed', 'unnamedplus' }

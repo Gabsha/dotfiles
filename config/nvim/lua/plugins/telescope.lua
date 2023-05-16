@@ -1,5 +1,4 @@
 local map = vim.api.nvim_set_keymap
-local builtin = require 'telescope.builtin'
 local actions = require 'telescope.actions'
 
 -- Mappings

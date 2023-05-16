@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.yarn/bin/:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.yarn/bin/:$HOME/.local/itksnap.app/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 # export TERM="xterm-256color"
@@ -13,7 +13,6 @@ export ZSH=/home/gabriel/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_COLOR_SCHEME='light'
-
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -94,11 +93,13 @@ DEFAULT_USER=gabriel
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vim=/opt/vim80/bin/vim
-# alias nvim=~/Applications/nvim.appimage
+alias nvim=~/Applications/nvim.appimage
 alias vim=nvim
 alias sudo='sudo '
 alias sa='source _venv/bin/activate'
 alias icat="kitty +kitten icat"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
 
 # Tmux alias
 alias tl="tmuxp load"
@@ -108,6 +109,7 @@ alias ta="tmux attach -t"
 # Exa alias
 alias ls='exa --icons'
 alias ll='ls -al'
+
 # Awesome font setup
 # source ~/.fonts/*.sh
 

@@ -48,18 +48,24 @@ function M.on_attach(client, bufnr)
     })
   end
 
-  --if client.resolved_capabilities.document_formatting then
-  --    vim.cmd([[
-  --    augroup LspFormatting
-  --        autocmd! * <buffer>
-  --        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-  --    augroup END
-  --    ]])
+  -- Format on save
+  --if client.supports_method 'textDocument/formatting' then
+  --  vim.api.nvim_clear_autocmds { group = formatting_augroup, buffer = bufnr }
+  --  vim.api.nvim_create_autocmd('BufWritePre', {
+  --    group = formatting_augroup,
+  --    buffer = bufnr,
+  --    callback = vim.lsp.buf.formatting_sync,
+  --  })
   --end
 end
 
 --M.capabilities = vim.lsp.protocol.make_client_capabilities()
 --M.capabilities = require('cmp_nvim_lsp').update_capabilities(M.capabilities)
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local lsp = vim.lsp
+lsp.handlers['textDocument/hover'] = lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded',
+})
 
 return M
