@@ -110,6 +110,8 @@ alias ta="tmux attach -t"
 alias ls='exa --icons'
 alias ll='ls -al'
 
+export FZF_ALT_C_COMMAND="fd . $HOME -t d"
+
 # Awesome font setup
 # source ~/.fonts/*.sh
 
