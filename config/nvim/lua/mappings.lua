@@ -31,6 +31,15 @@ map('n', '<s-F7>', '<cmd>lua require("mind").close()<CR>', opts)
 map('n', '<F6>', '<cmd>lua require("mind").open_project()<CR>', opts)
 map('n', '<s-F6>', '<cmd>lua require("mind").open_project(true)<CR>', opts)
 
+-- Move lines up and down with alt-k alt-j
+-- https://vim.fandom.com/wiki/Moving_lines_up_or_down
+map('n', '<A-j>', ':m .+1<CR>==', { noremap = true })
+map('n', '<A-k>', ':m .-2<CR>==', { noremap = true })
+map('i', '<A-j>', '<Esc>:m .+1<CR>==gi', { noremap = true })
+map('i', '<A-k>', '<Esc>:m .-2<CR>==gi', { noremap = true })
+map('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true })
+map('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true })
+
 -- Diagnostics
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 map('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
