@@ -7,7 +7,8 @@ killall -q picom
 
 # Launch bar1 and bar2
 echo "---" | tee -a /tmp/picom.log
-picom --experimental-backends --backend glx 2>&1 | tee -a /tmp/picom.log &
+#picom --experimental-backends --backend glx 2>&1 | tee -a /tmp/picom.log &
+picom 2>&1 | tee -a /tmp/picom.log &
 disown
 
 echo "Picom launched..."
