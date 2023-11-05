@@ -9,6 +9,7 @@ end
 
 null_ls.setup {
   sources = {
+    b.formatting.prettier,
     b.formatting.black.with { cwd = setup_finder },
     b.formatting.isort.with { cwd = setup_finder },
     b.diagnostics.flake8.with { cwd = setup_finder },
