@@ -1,7 +1,4 @@
 require('nvim-treesitter.configs').setup {
-  context_commentstring = {
-    enable = true,
-  },
   indent = {
     -- Exeperimental, enabled to fix jsdoc indentation issues https://github.com/nvim-treesitter/nvim-treesitter/pull/2545
     enable = true,
