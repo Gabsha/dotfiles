@@ -1,28 +1,22 @@
-require 'plugins'
-require 'mappings'
-require 'settings'
-require 'term'
+-- bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- vim.cmd 'colorscheme kanagawa'
--- vim.cmd 'colorscheme onedarkpro'
---vim.cmd 'colorscheme catppuccin'
- vim.cmd 'colorscheme tokyonight-night'
+vim.g.mapleader = " " -- Set before lazy
 
--- Map space to leader
-vim.g.mapleader = ' '
+plugins = require("plugins")
+require("lazy").setup(plugins, opts)
 
--- Python
-vim.g.python_host_prog = '/home/gabriel/Code/py2venv/bin/python'
-vim.g.python3_host_prog = '/home/gabriel/Code/pynvim/bin/python'
-
--- NerdTree
-vim.g.NERDTreeShowHidden = 1
---vim.g.NERDTreeWinSize = 50
-vim.g.NERDTreeIgnore = { '.git$[[dir]]', '_venv', '.egg-info$[[dir]]', '.eggs$[[dir]]', '.pytest_cache', '.pyc' }
-vim.g.NERDDefaultAlign = 'left'
-
--- Set tab config
-vim.cmd [[
-  autocmd FileType vue,javascript,json,typescript setlocal shiftwidth=2 softtabstop=2 expandtab
-  autocmd FileType html,htmldjango setlocal shiftwidth=4 softtabstop=4 expandtab
-]]
+vim.keymap.set("n", "<leader>f", function()
+  require("conform").format()
+end, { noremap = true })

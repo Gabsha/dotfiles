@@ -10,7 +10,7 @@ export ZSH=/home/gabriel/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster"
 # ZSH_THEME="oxide"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="half-life" # set by `omz`
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_COLOR_SCHEME='light'
 
@@ -107,7 +107,7 @@ alias tls="tmux ls"
 alias ta="tmux attach -t"
 
 # Exa alias
-alias ls='exa --icons'
+#alias ls='eza --icons'
 alias ll='ls -al'
 
 export FZF_ALT_C_COMMAND="fd . $HOME -t d"
