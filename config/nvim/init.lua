@@ -17,6 +17,5 @@ vim.g.mapleader = " " -- Set before lazy
 plugins = require("plugins")
 require("lazy").setup(plugins, opts)
 
-vim.keymap.set("n", "<leader>f", function()
-  require("conform").format()
-end, { noremap = true })
+require("options")
+require("mappings")

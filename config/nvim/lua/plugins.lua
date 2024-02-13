@@ -25,7 +25,6 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
   },
-  require("nvim-cmp"),
   {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
@@ -39,4 +38,10 @@ return {
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
   },
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  require("nvim-cmp"),
 }
