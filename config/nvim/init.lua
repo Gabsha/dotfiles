@@ -1,21 +1,11 @@
--- bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+require('config.options')
+require('config.lazy')
+require("config.mappings")
 
-vim.g.mapleader = " " -- Set before lazy
+require("neodev").setup({})
 
-plugins = require("plugins")
-require("lazy").setup(plugins, opts)
-
-require("options")
-require("mappings")
+-- Move this somewhere else
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({})
+lspconfig.pyright.setup({})
+lspconfig.tsserver.setup({})
