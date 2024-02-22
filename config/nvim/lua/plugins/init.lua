@@ -1,5 +1,6 @@
 return {
   "folke/which-key.nvim",
+  "tpope/vim-fugitive",
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   { "folke/neodev.nvim" },
   {
@@ -7,8 +8,16 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
+        python = { "isort", "black" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
       },
     },
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = true, -- use default opts
+    lazy = false,
   },
   {
     "folke/tokyonight.nvim",
